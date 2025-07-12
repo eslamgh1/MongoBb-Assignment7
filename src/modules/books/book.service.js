@@ -155,13 +155,13 @@ genres:["Dystopian","Science fiction"]
     });
   }
 };
-//! check parse
+//to parse toArray() 
 export const getTitle = async (req, res, next) => {
 
   try {
-    const book = await db.collection("books").find({ "title": "Brave new world" })
+    const book = await db.collection("books").find({ "title": "Brave new world" }).toArray()
 
-    return res.status(201).json({ message: "ok"});
+    return res.status(201).json({ message: "ok", book});
     
   } catch (error) {
     console.error("My message - Error creating book:", error);
